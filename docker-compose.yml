@@ -1,0 +1,21 @@
+version: '3.9'
+
+services:
+  # API
+  api:
+    container_name: gourmet_api_prod
+    build:
+      context: .
+      dockerfile: Dockerfile.prod.api    
+    environment:
+      - API_PORT=$API_PORT
+      - WITH_SWAGGER=$WITH_SWAGGER
+      - ADMIN_KEY=$ADMIN_KEY
+      - ADMIN_ADDRESS=$ADMIN_ADDRESS
+      - MINTER_KEY=$MINTER_KEY
+      - READER_KEY=$READER_KEY
+      - BLOCKCHAIN_RPC_URL_PORT=$BLOCKCHAIN_RPC_URL_PORT
+      - NFT_CONTRACT_ADDRESS=$NFT_CONTRACT_ADDRESS
+      - NOTARIZATION_CONTRACT_ADDRESS=$NOTARIZATION_CONTRACT_ADDRESS
+    ports:
+      - $API_PORT:$API_PORT
